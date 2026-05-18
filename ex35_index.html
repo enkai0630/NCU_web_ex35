@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 物件操作練習</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f6f9;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+        }
+        pre {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            overflow-x: auto;
+        }
+        .highlight {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>1. 原始物件的所有屬性 (Properties)</h2>
+    <pre id="properties-list"></pre>
+
+    <h2>2. 刪除 <span class="highlight">age</span> 屬性後的物件內容</h2>
+    <pre id="final-object"></pre>
+</div>
+
+<script>
+    // 建立題目給定的 Person 物件
+    var Person = {
+        firstName : "Tony",
+        lastName : "Lee",
+        age : 50,
+        eyeColor : "Blue"
+    };
+
+    // 1. 獲取並列出所有屬性名稱
+    // 使用 Object.keys() 可以直接拿到包含所有鍵名的陣列
+    var propList = Object.keys(Person).join(', ');
+    document.getElementById('properties-list').textContent = propList;
+
+    // 2. 刪除 age 屬性
+    delete Person.age;
+
+    // 3. 將刪除後的物件轉為漂亮的 JSON 字串並渲染到網頁上
+    // JSON.stringify 的後兩個參數可以用來做排版縮排（4個空格）
+    document.getElementById('final-object').textContent = JSON.stringify(Person, null, 4);
+</script>
+
+</body>
+</html>
